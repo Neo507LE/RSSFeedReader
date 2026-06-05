@@ -1,7 +1,7 @@
-# Specification Quality Checklist: RSS Feed Reader
+# Specification Quality Checklist: MVP RSS Reader
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
-**Created**: 2026-06-04
+**Created**: 2026-06-05
 **Feature**: [spec.md](../spec.md)
 
 ## Content Quality
