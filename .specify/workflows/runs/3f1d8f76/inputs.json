@@ -1,0 +1,7 @@
+{
+  "inputs": {
+    "spec": "Build an RSS feed reader application that fetches RSS feeds, displays article lists, supports reading articles, and allows adding/removing feeds.",
+    "integration": "copilot",
+    "scope": "full"
+  }
+}

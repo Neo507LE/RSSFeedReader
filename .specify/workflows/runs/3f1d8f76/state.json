@@ -1,0 +1,31 @@
+{
+  "run_id": "3f1d8f76",
+  "workflow_id": "speckit",
+  "status": "failed",
+  "current_step_index": 0,
+  "current_step_id": "specify",
+  "step_results": {
+    "specify": {
+      "integration": "copilot",
+      "model": null,
+      "options": {},
+      "input": {
+        "args": "Build an RSS feed reader application that fetches RSS feeds, displays article lists, supports reading articles, and allows adding/removing feeds."
+      },
+      "output": {
+        "command": "speckit.specify",
+        "integration": "copilot",
+        "model": null,
+        "options": {},
+        "input": {
+          "args": "Build an RSS feed reader application that fetches RSS feeds, displays article lists, supports reading articles, and allows adding/removing feeds."
+        },
+        "exit_code": 1,
+        "dispatched": false
+      },
+      "status": "failed"
+    }
+  },
+  "created_at": "2026-06-05T00:29:25.531873+00:00",
+  "updated_at": "2026-06-05T00:29:25.561268+00:00"
+}
