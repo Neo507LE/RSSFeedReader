@@ -1,50 +1,63 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+- Version change: placeholder template → 1.0.0
+- Modified principles: initial constitution defined from project goals and stack guidance
+- Added sections: Project Constraints, Development Workflow
+- Removed sections: none
+- Templates requiring updates: .specify/templates/plan-template.md ✅ reviewed (no change required), .specify/templates/spec-template.md ✅ reviewed (no change required), .specify/templates/tasks-template.md ✅ reviewed (no change required)
+- Follow-up TODOs: none
+-->
+
+# RSS Feed Reader Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. MVP-First Scope Control
+Every implementation MUST start with the documented MVP: add a subscription by URL and display the subscription list in the UI. Work on fetching, parsing, persistence, or advanced polish MUST NOT begin until the MVP path is verified. This keeps the project small, testable, and maintainable.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Secure Feed Input Handling
+All feed URLs and remote content MUST be treated as untrusted input. Validation, explicit error handling, and safe rendering rules are mandatory for any feed-related operation. The project MUST avoid executing or rendering unsafe remote content and MUST fail gracefully on malformed URLs or feeds.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Maintainable Separation of Concerns
+Backend and frontend responsibilities MUST remain explicit: the backend exposes feed-management APIs and data handling, while the frontend manages the user interface and user interaction. Shared contracts, simple interfaces, and clear file boundaries are required to reduce coupling.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Quality Gates and Test-First Delivery
+Core subscription and feed logic MUST be verified with automated tests and build validation before the work is considered complete. The project MUST keep route cleanup, CORS, and configuration checks verified before feature work proceeds, because runtime failures in these areas are costly to debug.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Incremental Delivery and Observability
+The implementation MUST be delivered in small, verifiable increments: MVP first, then Extended-MVP, then future enhancements. Each increment MUST provide clear error messages, predictable behavior, and enough logging or diagnostics to confirm what failed when a change does not work.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Project Constraints
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+The RSS Feed Reader project MUST follow these concrete constraints:
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+- Use ASP.NET Core Web API for backend services and Blazor WebAssembly for the frontend UI unless a later decision explicitly changes the stack.
+- Keep the MVP intentionally simple: in-memory subscription storage, no feed fetching, and no advanced UI polish.
+- Treat feed URLs as potentially invalid or malicious input; validate and handle failures explicitly.
+- Preserve cross-platform development support on Windows, macOS, and Linux.
+- Keep future extensibility in mind: persistence, background refresh, and richer feed display are allowed later without a rewrite.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Workflow
+
+The development workflow MUST enforce the following rules:
+
+1. Confirm the MVP scope before any feature work begins.
+2. Verify routing, configuration, and port alignment before implementing UI features.
+3. Run build and test validation for each meaningful change set before claiming completion.
+4. Keep documentation and implementation aligned with the current MVP or Extended-MVP phase.
+5. Review any change against security, maintainability, and code quality standards before merging.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes informal project practices for the RSS Feed Reader repository. Any amendment MUST update this file, the affected planning artifacts, and any directly related implementation guidance. Changes that affect scope, security, or quality gates MUST be reviewed before they are accepted.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+Versioning policy:
+- MAJOR: breaking changes to governance or core principles
+- MINOR: new principles or materially expanded project constraints
+- PATCH: wording, clarification, or non-semantic refinements
+
+Compliance review:
+- Every implementation change MUST verify the relevant build and tests.
+- Every pull request or implementation review MUST confirm that the work remains aligned with the MVP scope, security expectations, and maintainability rules in this constitution.
+
+**Version**: 1.0.0 | **Ratified**: 2026-06-05 | **Last Amended**: 2026-06-05
